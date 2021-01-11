@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript">
+        function fnValidate() {
+            var frmLogin = document.frmLogin;
+            var userId = frmLogin.user_id.value;
+            var userPw = frmLogin.user_pw.value;
+
+            if ((userId.length == 0 || userId == "") || (userPw.length == 0 || userPw == "")) {
+                alert("ID and Password is must required");
+            } else {
+                frmLogin.method = "post";
+                frmLogin.action = "login5";
+                frmLogin.submit();
+            }
+        }
+    </script>
+    <title>Title</title>
+</head>
+<body>
+<form name="frmLogin" method="post" action="login" enctype="UTF-8">
+    ID: <input type="text" name="user_id"><br>
+    PW: <input type="password" name="user_pw"><br>
+    <input type="button" onclick="fnValidate()" value="login">
+    <input type="reset" value="Reset">
+    <input type="hidden" name="user_address" value="korea">
+</form>
+</body>
+</html>
