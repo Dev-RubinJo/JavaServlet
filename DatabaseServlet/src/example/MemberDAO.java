@@ -1,24 +1,39 @@
 package example;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class MemberDAO {
 
-    private Statement stmt;
+    private PreparedStatement pstmt;
     private Connection conn;
+    private DataSource dataSource;
+
+    public MemberDAO() {
+        try {
+            Context ctx = new InitialContext();
+            Context envContext = (Context) ctx.lookup("java:/comp/env");
+            dataSource = (DataSource) envContext.lookup("jdbc/mysql");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     public List<MemberVO> listMembers() {
         List<MemberVO> list = new ArrayList<>();
         try {
-            connDB();
+//            connDB();
+            conn = dataSource.getConnection();
             String query = "select * from DatabaseServlet.tMember";
-            ResultSet rs = stmt.executeQuery(query);
+            System.out.println("PreparedStatement query is " + query);
+            pstmt = conn.prepareStatement(query);
+            ResultSet rs = pstmt.executeQuery(query);
             while (rs.next()) {
                 String id = rs.getString("id");
                 String pwd = rs.getString("pwd");
@@ -36,7 +51,7 @@ public class MemberDAO {
                 list.add(vo);
             }
             rs.close();
-            stmt.close();
+            pstmt.close();
             conn.close();
         } catch (Exception e) {
             e.printStackTrace();
@@ -44,22 +59,20 @@ public class MemberDAO {
         return list;
     }
 
-    private void connDB() {
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            System.out.println("Success for Load Driver");
-
-            String url = "jdbc:mysql://localhost:3306/DatabaseServlet?serverTimezone=UTC";
-            String user = "rubin";
-            String password = "PASSOWRD";
-
-            conn = DriverManager.getConnection(url, user, password);
-            System.out.println("Success for connect Mysql");
-
-            stmt = conn.createStatement();
-            System.out.println("Success for Create Stmt");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+//    private void connDB() {
+//        try {
+//            Class.forName("com.mysql.cj.jdbc.Driver");
+//            System.out.println("Success for Load Driver");
+//            String url = "jdbc:mysql://localhost:3306/DatabaseServlet?serverTimezone=UTC";
+//            String user = "rubin";
+//            String password = "PASSWORD";
+//            conn = DriverManager.getConnection(url, user, password);
+//            System.out.println("Success for connect Mysql");
+//            stmt = conn.createStatement();
+//            System.out.println("Success for Create Stmt");
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 }
