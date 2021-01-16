@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create New User</title>
+    <script type="text/javascript">
+        function sendMember() {
+            var frmMember = document.frmMember;
+            var id = frmMember.id.value;
+            var password = frmMember.password.value;
+            var name = frmMember.name.value;
+            var email = frmMember.email.value;
+
+            if (id.length == 0 || id == "") {
+                alert("You must input ID field!");
+            }
+            if (password.length == 0 || password == "") {
+                alert("You must input Password field!");
+            }
+            if (name.length == 0 || name == "") {
+                alert("You must input Name field!");
+            }
+            if (email.length == 0 || email == "") {
+                alert("You must input Email field!");
+            }
+
+            frmMember.method = "post";
+            frmMember.action = "member";
+            frmMember.submit();
+        }
+    </script>
+</head>
+<body>
+<form name="frmMember">
+    <table>
+        <th>Sign Up Page</th>
+        <tr>
+            <td>ID</td>
+            <td><input type="text" name="id"></td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td><input type="password" name="password"></td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td><input type="text" name="name"></td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td><input type="text" name="email"></td>
+        </tr>
+    </table>
+    <input type="button" value="Sign Up" onclick="sendMember()">
+    <input type="reset" value="re-typing">
+    <input type="hidden" name="command" value="addMember" />
+</form>
+</body>
+</html>

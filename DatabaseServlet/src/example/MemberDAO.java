@@ -59,20 +59,42 @@ public class MemberDAO {
         return list;
     }
 
-//    private void connDB() {
-//        try {
-//            Class.forName("com.mysql.cj.jdbc.Driver");
-//            System.out.println("Success for Load Driver");
-//            String url = "jdbc:mysql://localhost:3306/DatabaseServlet?serverTimezone=UTC";
-//            String user = "rubin";
-//            String password = "PASSWORD";
-//            conn = DriverManager.getConnection(url, user, password);
-//            System.out.println("Success for connect Mysql");
-//            stmt = conn.createStatement();
-//            System.out.println("Success for Create Stmt");
-//
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
+    public void addMember(MemberVO vo) {
+        try {
+            conn = dataSource.getConnection();
+            String id = vo.getId();
+            String password = vo.getPwd();
+            String name = vo.getName();
+            String email = vo.getEmail();
+
+            String query = "insert into DatabaseServlet.tMember" +
+                    " (id, pwd, name, email)" +
+                    " values(?, ?, ?, ?)";
+
+            System.out.println("prepareStatement: " + query);
+            pstmt = conn.prepareStatement(query);
+            pstmt.setString(1, id);
+            pstmt.setString(2, password);
+            pstmt.setString(3, name);
+            pstmt.setString(4, email);
+            pstmt.executeUpdate();
+            pstmt.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void delMember(String id) {
+        try {
+            conn = dataSource.getConnection();
+            String query = "delete from DatabaseServlet.tMember where id=?";
+            System.out.println("PrepareStatement: " + query);
+            pstmt = conn.prepareStatement(query);
+            pstmt.setString(1, id);
+            pstmt.executeUpdate();
+            pstmt.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
