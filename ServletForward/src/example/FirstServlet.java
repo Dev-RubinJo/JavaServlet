@@ -1,5 +1,6 @@
 package example;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,11 +14,7 @@ public class FirstServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        PrintWriter printWriter = resp.getWriter();
-        resp.setContentType("text/html;charset=utf-8");
-        resp.addHeader("Refresh", "1;url=second");
-        printWriter.print("<script type='text/javascript'>" +
-                "location.href='second';" +
-                "</script>");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("second");
+        dispatcher.forward(req, resp);
     }
 }
