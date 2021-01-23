@@ -15,7 +15,7 @@ public class SecondServlet extends HttpServlet {
         resp.setContentType("text/html;charset=utf-8");
         PrintWriter printWriter = resp.getWriter();
         printWriter.print("<html><body>" +
-                "this is send redirect" +
+                "this is Refresh" +
                 "</body></html>");
     }
 }
