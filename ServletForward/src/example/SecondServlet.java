@@ -12,10 +12,14 @@ import java.io.PrintWriter;
 public class SecondServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("utf-8");
+        String name = req.getParameter("name");
+
+
         resp.setContentType("text/html;charset=utf-8");
         PrintWriter printWriter = resp.getWriter();
         printWriter.print("<html><body>" +
-                "this is RequestDispatcher" +
+                "이름" + name +
                 "</body></html>");
     }
 }
