@@ -13,13 +13,13 @@ public class SecondServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("utf-8");
-        String name = req.getParameter("name");
+        String address = (String) req.getAttribute("address");
 
 
         resp.setContentType("text/html;charset=utf-8");
         PrintWriter printWriter = resp.getWriter();
         printWriter.print("<html><body>" +
-                "이름" + name +
+                "주소" + address +
                 "</body></html>");
     }
 }

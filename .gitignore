@@ -1,2 +1,4 @@
 DatabaseServlet/web/META-INF/context.xml
 DatabaseServlet/out/
+ServletForward/out/
+ServletForward/web/META-INF/context.xml

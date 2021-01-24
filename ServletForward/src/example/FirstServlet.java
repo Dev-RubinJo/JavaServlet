@@ -14,7 +14,11 @@ public class FirstServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher dispatcher = req.getRequestDispatcher("second?name=Name");
+        req.setCharacterEncoding("utf-8");
+        req.setAttribute("address", "경기도 경기");
+        resp.setContentType("text/html;charset=utf-8");
+
+        RequestDispatcher dispatcher = req.getRequestDispatcher("second");
         dispatcher.forward(req, resp);
     }
 }
