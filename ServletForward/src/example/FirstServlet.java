@@ -15,6 +15,11 @@ public class FirstServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html;charset=utf-8");
-        resp.addHeader("Refresh", "1;url=second?name=Jo");
+
+        PrintWriter writer = resp.getWriter();
+        writer.print("<script type='text/javascript'>" +
+                "location.href='second?name=Joo';" +
+                "</script>");
+//        writer.close();
     }
 }
