@@ -11,7 +11,7 @@ import java.io.PrintWriter;
 import java.net.URLEncoder;
 import java.util.Date;
 
-@WebServlet(name = "SetCookieValueServlet", urlPatterns = "/set")
+@WebServlet(name = "SetCookieValueServlet", urlPatterns = "/setCookie")
 public class SetCookieValueServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=utf-8");

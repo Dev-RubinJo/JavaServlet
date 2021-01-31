@@ -5,3 +5,7 @@ ServletForward/out/
 ServletForward/web/META-INF/context.xml
 
 ServletContext/out/
+
+SessionTracking/out/
+SessionTracking/web/META-INF/
+

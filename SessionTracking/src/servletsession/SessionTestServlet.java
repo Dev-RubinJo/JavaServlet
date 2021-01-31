@@ -26,5 +26,6 @@ public class SessionTestServlet extends HttpServlet {
         if (session.isNew()) {
             writer.println("새 세션이 만들어졌습니다.");
         }
+        session.invalidate(); // 세션강제 삭제
     }
 }

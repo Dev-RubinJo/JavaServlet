@@ -12,7 +12,7 @@ import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.Date;
 
-@WebServlet(name = "GetCookieValueServlet", urlPatterns = "/get")
+@WebServlet(name = "GetCookieValueServlet", urlPatterns = "/getCookie")
 public class GetCookieValueServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=utf-8");
