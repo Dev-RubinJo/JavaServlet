@@ -5,14 +5,24 @@
   Time: 오후 11:46
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8"
+language="java"
+import="java.util.*"
+session="true"
+buffer="8kb"
+autoFlush="true"
+isThreadSafe="true"
+info="(Shopping Mall...............................)"
+isErrorPage="false"
+errorPage="" %>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>첫 번째 페이지</title>
+    <title>페이지 디렉티브 연습</title>
 </head>
 <body>
-<h1>Hello JSP!</h1>
-<h1>JSP 실습입니다.</h1>
+<h1>쇼핑몰 구현 중심 JSP입니다.</h1>
+<%@ include file="tree_image.jsp" %>
+<h1>여기는 끝부분 입니다.</h1>
 </body>
 </html>
