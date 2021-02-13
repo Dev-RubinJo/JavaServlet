@@ -9,3 +9,5 @@ ServletContext/out/
 SessionTracking/out/
 SessionTracking/web/META-INF/
 
+MVCServlet/out
+MVCServlet/web/META-INF/
