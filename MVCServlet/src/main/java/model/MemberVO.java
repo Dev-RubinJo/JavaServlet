@@ -14,6 +14,21 @@ public class MemberVO {
         System.out.println("Called MemberVO initializer");
     }
 
+    public MemberVO(String id, String pwd, String name, String email) {
+        this.id = id;
+        this.pwd = pwd;
+        this.name = name;
+        this.email = email;
+    }
+
+    public MemberVO(String id, String pwd, String name, String email, Date joinDate) {
+        this.id = id;
+        this.pwd = pwd;
+        this.name = name;
+        this.email = email;
+        this.joinDate = joinDate;
+    }
+
     public String getId() {
         return id;
     }
